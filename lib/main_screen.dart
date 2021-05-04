@@ -12,13 +12,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedTabIndex = 0;
-  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static final List<Widget> _widgetOptions = <Widget>[
-    WebViewScreen(),
-    Text('Index 1: Business', style: optionStyle),
-    Text('Index 2: Logout', style: optionStyle),
-  ];
+  int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -34,7 +28,7 @@ class _MainScreenState extends State<MainScreen> {
 
   _onItemTapped(int index) {
     setState(() {
-      _selectedTabIndex = index;
+      _selectedIndex = index;
     });
     switch (index) {
       case 2:
@@ -47,14 +41,21 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: _widgetOptions.elementAt(_selectedTabIndex)),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: [
+          WebViewScreen(),
+          Center(child: Text('Index 1: Add Note')),
+          Center(child: CircularProgressIndicator()),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.business), label: 'Business'),
+          BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'View'),
+          BottomNavigationBarItem(icon: Icon(Icons.note_add), label: 'Note'),
           BottomNavigationBarItem(icon: Icon(Icons.logout), label: 'Logout'),
         ],
-        currentIndex: _selectedTabIndex,
+        currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
