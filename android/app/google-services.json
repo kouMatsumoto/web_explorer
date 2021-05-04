@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "994582134970",
+    "project_id": "km-web-explorer",
+    "storage_bucket": "km-web-explorer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994582134970:android:bd32a476906f51bac1c283",
+        "android_client_info": {
+          "package_name": "app.koumatsumoto.web_explorer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "994582134970-vha9nb5hoj1cap46psk0vn9ifsgk3t7m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcXDGP1wMeu_UhkSTlx98j9297yUz0EQA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "994582134970-vha9nb5hoj1cap46psk0vn9ifsgk3t7m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
