@@ -20,20 +20,17 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(16),
-            alignment: Alignment.center,
-            child: SignInButtonBuilder(
-              icon: Icons.verified_user,
-              backgroundColor: Colors.orange,
-              text: 'Google Login',
-              onPressed: () => _loginWithGoogle(),
-            ),
+      appBar: AppBar(title: const Text('Web Explorer')),
+      body: Center(
+        child: Container(
+          height: 48,
+          child: SignInButtonBuilder(
+            icon: Icons.verified_user,
+            backgroundColor: Colors.blue,
+            text: 'Google Login',
+            onPressed: () => _loginWithGoogle(),
           ),
-        ],
+        ),
       ),
     );
   }
