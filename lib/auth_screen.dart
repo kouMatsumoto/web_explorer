@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_builder.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthScreen extends StatelessWidget {
   Future<void> _loginWithGoogle() async {
@@ -11,7 +12,9 @@ class AuthScreen extends StatelessWidget {
       final credential = GoogleAuthProvider.credential(
           accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
 
-      await FirebaseAuth.instance.signInWithCredential(credential);
+      final auth = await FirebaseAuth.instance.signInWithCredential(credential);
+      await FirebaseFirestore.instance.collection('users').add(
+          <String, String>{'email': auth.user.email, 'uid': auth.user.uid});
     } catch (e) {
       print('Exception: ' + e.toString());
     }
