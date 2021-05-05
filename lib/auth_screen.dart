@@ -4,12 +4,12 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 
 class AuthScreen extends StatelessWidget {
-  void _loginWithGoogle() async {
+  Future<void> _loginWithGoogle() async {
     try {
-      final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-      final credential =
-          GoogleAuthProvider.credential(accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+      final googleUser = await GoogleSignIn().signIn();
+      final googleAuth = await googleUser.authentication;
+      final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
 
       await FirebaseAuth.instance.signInWithCredential(credential);
     } on Exception catch (e) {

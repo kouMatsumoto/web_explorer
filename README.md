@@ -15,8 +15,19 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+### Prerequisite
+
+- Install Node.js and npm
+- Install Prettier
+  - npm i -g prettier
+
 ## Notes
 
-- develop commands
+### Commands
+
+- to develop
   - `firebase emulators:start`
   - Run application by using IDE
+- to format
+  - flutter format .
+  - flutter analyze

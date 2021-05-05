@@ -22,11 +22,12 @@ class _MainScreenState extends State<MainScreen> {
     }
   }
 
-  _logout() {
-    Future.delayed(Duration.zero).then((_) => FirebaseAuth.instance.signOut());
+  void _logout() {
+    Future<dynamic>.delayed(Duration.zero)
+        .then((dynamic _) => FirebaseAuth.instance.signOut());
   }
 
-  _onItemTapped(int index) {
+  void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
