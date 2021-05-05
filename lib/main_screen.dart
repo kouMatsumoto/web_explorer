@@ -5,21 +5,25 @@ import 'package:firebase_auth/firebase_auth.dart';
 import './webview_screen.dart';
 
 class MainScreen extends StatefulWidget {
-  MainScreen({Key key}) : super(key: key);
+  final User user;
+
+  MainScreen({Key key, this.user}) : super(key: key);
 
   @override
-  _MainScreenState createState() => _MainScreenState();
+  _MainScreenState createState() => _MainScreenState(user: user);
 }
 
 class _MainScreenState extends State<MainScreen> {
+  final User user;
   int _selectedIndex = 0;
+
+  _MainScreenState({this.user});
 
   @override
   void initState() {
+    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
+
     super.initState();
-    if (Platform.isAndroid) {
-      WebView.platform = SurfaceAndroidWebView();
-    }
   }
 
   void _logout() {
@@ -46,7 +50,9 @@ class _MainScreenState extends State<MainScreen> {
         index: _selectedIndex,
         children: [
           WebViewScreen(),
-          Center(child: Text('Index 1: Add Note')),
+          Center(
+              child: Text(
+                  'Add Note Page for user ${user.displayName} / ${user.uid}')),
           Center(child: CircularProgressIndicator()),
         ],
       ),

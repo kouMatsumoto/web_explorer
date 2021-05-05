@@ -12,7 +12,7 @@ class AuthScreen extends StatelessWidget {
           accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
 
       await FirebaseAuth.instance.signInWithCredential(credential);
-    } on Exception catch (e) {
+    } catch (e) {
       print('Exception: ' + e.toString());
     }
   }

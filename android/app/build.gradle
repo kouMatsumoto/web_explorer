@@ -60,15 +60,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
-//    implementation 'com.google.firebase:firebase-core:18.0.3'
-//    implementation 'com.google.firebase:firebase-common:19.5.0'
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.firebase:firebase-firestore-ktx'
 }
-
-//rootProject.ext {
-//    set('FlutterFire', [
-//            FirebaseSDKVersion: '25.12.0'
-//    ])
-//}
