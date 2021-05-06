@@ -36,5 +36,4 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Notes
 
-- [Firestore rules tips](https://qiita.com/sgr-ksmt/items/1a731fdadf06119d35fc)
-
+- [Firestore rules tips](https://tech-blog.sgr-ksmt.org/2018/12/11/194022/)

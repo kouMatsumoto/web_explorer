@@ -13,6 +13,10 @@ service cloud.firestore {
       allow create: if isAuthenticated();
       allow read: if isUserAuthenticated(userID);
       allow update: if isUserAuthenticated(userID);
+
+      match /views/{viewID} {
+        allow read, write: if true;
+      }
     }
   }
 }

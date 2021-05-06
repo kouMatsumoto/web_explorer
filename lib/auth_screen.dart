@@ -13,8 +13,10 @@ class AuthScreen extends StatelessWidget {
           GoogleAuthProvider.credential(accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
 
       final auth = await FirebaseAuth.instance.signInWithCredential(credential);
-      final data = {'email': auth.user.email};
-      await FirebaseFirestore.instance.collection('users').doc(auth.user.uid).set(data);
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(auth.user.uid)
+          .set(<String, String>{'email': auth.user.email});
     } catch (e) {
       print('Exception: ' + e.toString());
     }
