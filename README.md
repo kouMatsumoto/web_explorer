@@ -33,3 +33,8 @@ samples, guidance on mobile development, and a full API reference.
   - flutter build apk
   - connect a device to install and get device id from `flutter devices`
   - `flutter install -d ${DEVICE_ID}`
+
+## Notes
+
+- [Firestore rules tips](https://qiita.com/sgr-ksmt/items/1a731fdadf06119d35fc)
+
