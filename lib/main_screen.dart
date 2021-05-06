@@ -1,23 +1,18 @@
 import 'dart:io';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import './webview_screen.dart';
 
 class MainScreen extends StatefulWidget {
-  final User user;
-
-  MainScreen({Key key, this.user}) : super(key: key);
-
   @override
-  _MainScreenState createState() => _MainScreenState(user: user);
+  _MainScreenState createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final User user;
   int _selectedIndex = 0;
-
-  _MainScreenState({this.user});
 
   @override
   void initState() {
@@ -27,8 +22,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   void _logout() {
-    Future<dynamic>.delayed(Duration.zero)
-        .then((dynamic _) => FirebaseAuth.instance.signOut());
+    Future<dynamic>.delayed(Duration.zero).then((dynamic _) => FirebaseAuth.instance.signOut());
   }
 
   void _onItemTapped(int index) {
@@ -52,7 +46,7 @@ class _MainScreenState extends State<MainScreen> {
           WebViewScreen(),
           Center(
               child: Text(
-                  'Add Note Page for user ${user.displayName} / ${user.uid}')),
+                  'Add Note Page for user ${FirebaseAuth.instance.currentUser.email} / ${FirebaseAuth.instance.currentUser.uid}')),
           Center(child: CircularProgressIndicator()),
         ],
       ),

@@ -33,7 +33,7 @@ class App extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasData) {
-            return MainScreen(user: snapshot.data);
+            return MainScreen();
           } else {
             return AuthScreen();
           }
