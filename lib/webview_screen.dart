@@ -4,13 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewScreen extends StatelessWidget {
+  WebViewController _controller;
+
   Future<void> _onPageStarted(String url) async {
-    print('_onPageStarted: $url');
+    final data = {
+      'time': DateTime.now().toIso8601String(),
+      'url': await _controller.currentUrl(),
+      'title': await _controller.getTitle()
+    };
+
     await FirebaseFirestore.instance
         .collection('users')
         .doc(FirebaseAuth.instance.currentUser.uid)
         .collection('views')
-        .add(<String, String>{'url': url, 'time': DateTime.now().toIso8601String()});
+        .add(data);
   }
 
   @override
@@ -22,6 +29,9 @@ class WebViewScreen extends StatelessWidget {
           javascriptMode: JavascriptMode.unrestricted,
           debuggingEnabled: true,
           onPageStarted: _onPageStarted,
+          onWebViewCreated: (controller) {
+            _controller = controller;
+          },
         ),
       ),
     );
