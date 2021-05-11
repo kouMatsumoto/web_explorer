@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:web_explorer/account_screen.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import './webview_screen.dart';
@@ -21,20 +22,10 @@ class _MainScreenState extends State<MainScreen> {
     super.initState();
   }
 
-  void _logout() {
-    Future<dynamic>.delayed(Duration.zero).then((dynamic _) => FirebaseAuth.instance.signOut());
-  }
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-    switch (index) {
-      case 2:
-        {
-          _logout();
-        }
-    }
   }
 
   @override
@@ -47,14 +38,14 @@ class _MainScreenState extends State<MainScreen> {
           Center(
               child: Text(
                   'Add Note Page for user ${FirebaseAuth.instance.currentUser.email} / ${FirebaseAuth.instance.currentUser.uid}')),
-          Center(child: CircularProgressIndicator()),
+          AccountScreen(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'View'),
           BottomNavigationBarItem(icon: Icon(Icons.note_add), label: 'Note'),
-          BottomNavigationBarItem(icon: Icon(Icons.logout), label: 'Logout'),
+          BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: 'Account'),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
