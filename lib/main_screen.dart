@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:web_explorer/account_screen.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import './note_screen.dart';
 import './webview_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -35,9 +35,7 @@ class _MainScreenState extends State<MainScreen> {
         index: _selectedIndex,
         children: [
           WebViewScreen(),
-          Center(
-              child: Text(
-                  'Add Note Page for user ${FirebaseAuth.instance.currentUser.email} / ${FirebaseAuth.instance.currentUser.uid}')),
+          NoteScreen(),
           AccountScreen(),
         ],
       ),
