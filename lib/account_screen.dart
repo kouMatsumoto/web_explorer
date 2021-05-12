@@ -13,7 +13,8 @@ class AccountScreen extends StatelessWidget {
         Card(
           child: ListTile(
             leading: CircleAvatar(backgroundImage: NetworkImage(FirebaseAuth.instance.currentUser.photoURL)),
-            title: Text(FirebaseAuth.instance.currentUser.email),
+            title: const Text('Account'),
+            subtitle: Text(FirebaseAuth.instance.currentUser.email),
             trailing: IconButton(icon: Icon(Icons.logout), onPressed: _logout),
           ),
         ),
