@@ -1,9 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:web_explorer/account_screen.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
+import './account_screen.dart';
 import './note_screen.dart';
 import './webview_screen.dart';
 
@@ -17,8 +14,6 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void initState() {
-    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
-
     super.initState();
   }
 
